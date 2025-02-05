@@ -1,7 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
+import {auth, signIn, signOut} from "@/auth"
 
-const Navbar = () => {
+const Navbar = async () => {
+    const session = await auth();
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
     <nav className="flex justify-between items-center">
@@ -10,6 +12,29 @@ const Navbar = () => {
         width={144}
         height={30} />
         </Link>
+        <div className="flex items-center gap-5 text-black">
+            {session && session?.user ? ( // if session exists, and session has a user
+                <>
+                <Link href="/startup/create">
+                <span>Create</span>
+                </Link>
+                <button onClick={signOut}>
+                    <span>Logout</span>
+                </button>
+                <Link href={`/user/${session?.id}`}>
+                <span>{session?.user?.name}</span>
+                </Link>
+                </>
+            ): ( //ternary operator false part
+                <button onClick={ async () => {
+                    "use server";
+                    await signIn( provider:'github' )
+                }}>
+                    <span></span>
+                </button>
+            )
+            }
+        </div>
     </nav>
     </header>
   )

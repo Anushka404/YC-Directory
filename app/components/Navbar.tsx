@@ -28,6 +28,8 @@ const Navbar = async () => {
             ): ( //ternary operator false part
                 <button onClick={ async () => {
                     "use server";
+
+                    
                     await signIn( provider:'github' )
                 }}>
                     <span></span>

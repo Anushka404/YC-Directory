@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "cross-env NEXT_USE_TURBOPACK=0 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,10 +14,13 @@
     "react-dom": "$react-dom"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "cross-env": "^7.0.3",
     "next": "15.1.6",
     "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

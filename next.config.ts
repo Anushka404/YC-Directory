@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
         hostname: '*',
       }
     ]
+  },
+  experiment: {
+    ppr: 'incremental'
+  },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
   }
 };
 

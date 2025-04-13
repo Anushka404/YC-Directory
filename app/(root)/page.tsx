@@ -8,9 +8,10 @@ export default async function Home({searchParams}:{
 }) {
   //extract query
   const query = (await searchParams).query;
+  const params = { search: query || null};
   
   //fetch startup from sanity db and revalidate whenever new changes are made
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
 
   return (
     <>
